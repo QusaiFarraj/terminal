@@ -43,7 +43,7 @@ class Terminal implements Factory
      * Create a fake response.
      *
      * @param  mixed $lines
-     * @return \TitasGailius\Terminal\Fakes\ResponseFakeBuilder
+     * @return \TitasGailius\Terminal\Fakes\ResponseFake
      */
     public static function response($lines = null, $process = null)
     {
@@ -74,11 +74,11 @@ class Terminal implements Factory
     /**
      * Create a new output line.
      *
-     * @param  mixed  $content
+     * @param  string  $content
      * @param  string  $type
-     * @return \TitasGailius\Terminal\OutputLine
+     * @return \TitasGailius\Terminal\OutputLine|array
      */
-    public static function line($content = '', string $type = Process::OUT)
+    public static function line(string $content = '', string $type = Process::OUT)
     {
         if ($content instanceof OutputLine) {
             return $content;
@@ -108,7 +108,7 @@ class Terminal implements Factory
     /**
      * Get an instance of the Process builder class.
      *
-     * @return \TitasGailius\Terminal\Builder|\TitasGailius\Terminal\BuilderFake
+     * @return \TitasGailius\Terminal\Builder|\TitasGailius\Terminal\Fakes\BuilderFake
      */
     public static function builder()
     {
@@ -124,7 +124,7 @@ class Terminal implements Factory
      *
      * @param  string  $method
      * @param  array  $parameters
-     * @return \TitasGailius\Terminal\Builder|\TitasGailius\Terminal\BuilderFake
+     * @return \TitasGailius\Terminal\Builder|\TitasGailius\Terminal\Fakes\BuilderFake
      */
     public static function __callStatic(string $method, array $parameters)
     {
